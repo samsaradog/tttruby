@@ -30,8 +30,8 @@ describe "Game" do
   
   context "draw game" do
     before(:each) do
-      ["0","1","5","6","8"].each { |position| @game.move(position,'X')  }
-      ["2","3","4","7"].each     { |position| @game.move(position,'O')  }
+      X_DRAW_MOVES.each { |position| @game.move(position,'X')  }
+      O_DRAW_MOVES.each { |position| @game.move(position,'O')  }
     end
     
     it "has error state none" do

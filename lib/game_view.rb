@@ -26,11 +26,11 @@ class GameView
     case game.notification
     when :empty
       ""
-    when :draw
+    when DRAW
       "Draw Game"
-    when "X wins"
+    when X_WIN
       "X is the Winner!"
-    when "O wins"
+    when O_WIN
       "O is the Winner!"
     end
   end

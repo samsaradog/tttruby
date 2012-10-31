@@ -10,7 +10,7 @@ describe "GameView" do
       game.move(position, value)
       string.sub!(Regexp.new(position), value)
     end
-    
+
   end
   
   before(:each) do
@@ -41,8 +41,8 @@ describe "GameView" do
   context "draw game" do
     
     before(:each) do
-      modify(@game,@game_string,'X',["0","1","5","6","8"])
-      modify(@game,@game_string,'O',["2","3","4","7"])
+      modify(@game,@game_string,'X',X_DRAW_MOVES)
+      modify(@game,@game_string,'O',O_DRAW_MOVES)
       @game_view.update(@game)
     end
     

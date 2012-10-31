@@ -42,7 +42,9 @@ class Game
   def winner_check(value)
     @winners.each do | pattern |
       if @condition.match(pattern.gsub(WINNER_KEY_RE, value))
-        @completed = true and @notification = "#{value} wins" and break
+        @completed = true
+        @notification = value + WIN_STUB
+        break
       end
     end 
   end
