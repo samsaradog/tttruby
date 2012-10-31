@@ -7,21 +7,27 @@ class Game
     @notification = :empty
     @completed    = false
     @error        = :none
-    @condition    = INITIAL_CONDITION.dup
+    @condition    = INITIAL_CONDITION
     
     @winners      = WINNERS_RE.dup
     
   end
   
-def valid_move?(position)
-  position =~ GAME_RANGE_RE
-end
+  def ==(other)
+    @notification == other.notification and
+    @completed    == other.completed    and
+    @condition    == other.condition
+  end
+  
+  def valid_move?(position)
+    position =~ GAME_RANGE_RE
+  end
   
   def move(position, value)
     raise RangeError   unless valid_move?(position)
     raise RuntimeError unless @condition.include?(position)
     
-    @condition.sub!(position, value) 
+    @condition = @condition.sub(position, value) 
     winner_check(value)
     state_check
   end

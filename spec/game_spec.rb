@@ -83,4 +83,19 @@ describe "Game" do
       @game.condition.should == "012345OOO"
     end
   end
+  
+  context "duplicating game" do
+    it "should show duplicated games equal" do
+      new_game = @game.dup
+      @game.should == new_game
+      @game.should_not equal new_game
+    end
+    it "should show modified game not equal" do
+      new_game = @game.dup
+      ("0".."2").to_a.each { | position | new_game.move(position,'X') }
+      @game.should_not == new_game
+      @game.completed.should_not == new_game.completed
+      @game.condition.should_not == new_game.condition
+    end
+  end
 end
