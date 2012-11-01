@@ -95,7 +95,7 @@ describe "Game" do
       ("0".."2").to_a.each { | position | new_game.move(position,'X') }
       @game.should_not == new_game
       @game.completed.should_not == new_game.completed
-      @game.condition.should_not == new_game.condition
+      @game.condition.should_not  == new_game.condition
     end
   end
 end

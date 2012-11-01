@@ -25,3 +25,26 @@ O_WIN    = "O wins"
 WIN_STUB = " wins"
 DRAW     = :draw
 
+MOVE_MESSAGE = "Please choose 0-8 to move,\n" +
+               "Y for a new game or Q to quit.\n"
+               
+PLAYER_X_FIRST_MESSAGE = "Human moves first\n"
+PLAYER_O_FIRST_MESSAGE = "Computer moves first\n"
+
+PLAYER_X_MOVE = "X"
+PLAYER_O_MOVE = "O"
+
+TEASE_MESSAGE = "Computer is going to win\n"
+
+MOVE_TAKEN_MESSAGE = " not available. Please choose another\n"
+
+BAD_INPUT_MESSAGE = "Sorry, I don't understand "
+
+DRAW_GAME_MESSAGE = "Draw Game."
+X_WINS_MESSAGE    = "X is the Winner!"
+O_WINS_MESSAGE    = "O is the Winner!"
+
+GAME_COMPLETED_MESSAGE = "Would you like to play again?"
+
+EXIT_MESSAGE = "Thank you for playing!\n"
+

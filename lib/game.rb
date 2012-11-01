@@ -15,7 +15,7 @@ class Game
   
   def ==(other)
     @notification == other.notification and
-    @completed    == other.completed    and
+    @completed    == other.completed   and
     @condition    == other.condition
   end
   
@@ -35,7 +35,7 @@ class Game
   def state_check
     unless @completed
       @completed = !valid_move?(@condition)
-      @notification = :draw
+      @notification = :draw if @completed
     end
   end
   

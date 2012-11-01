@@ -9,7 +9,7 @@ class GameView
 
     @notification = ""
     @error        = ""
-    @completion   = "Please make your move"
+    @completion   = MOVE_MESSAGE
   end
    
   def update(game)
@@ -18,7 +18,7 @@ class GameView
        @representation.sub!(Regexp.new(position.to_s), value) unless value.match(GAME_RANGE_RE)
      end
      
-     @completion   = "Would you like to play again?" if game.completed
+     @completion   = GAME_COMPLETED_MESSAGE if game.completed
      @notification = update_notification(game)
   end
   
@@ -27,11 +27,11 @@ class GameView
     when :empty
       ""
     when DRAW
-      "Draw Game"
+      DRAW_GAME_MESSAGE
     when X_WIN
-      "X is the Winner!"
+      X_WINS_MESSAGE
     when O_WIN
-      "O is the Winner!"
+      O_WINS_MESSAGE
     end
   end
 end
