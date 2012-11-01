@@ -34,7 +34,7 @@ describe "GameView" do
       @game_view.error.should == ""
     end
     it "has completion message available" do
-      @game_view.completion.should == "Please make your move"
+      @game_view.completion.should == MOVE_MESSAGE
     end
   end
   
@@ -50,10 +50,10 @@ describe "GameView" do
       @game_view.representation.should == @game_string
     end
     it "should notify a draw game" do
-      @game_view.notification.should == "Draw Game"
+      @game_view.notification.should == DRAW_GAME_MESSAGE
     end
     it "should show game complete" do
-      @game_view.completion.should == "Would you like to play again?"
+      @game_view.completion.should == GAME_COMPLETED_MESSAGE
     end
   end
   
