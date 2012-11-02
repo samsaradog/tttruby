@@ -67,10 +67,10 @@ describe "GameView" do
       @game_view.representation.should == @game_string
     end
     it "should show game complete" do
-      @game_view.completion.should == "Would you like to play again?"
+      @game_view.completion.should == GAME_COMPLETED_MESSAGE
     end
     it "should show X as winner" do
-      @game_view.notification.should == "X is the Winner!"
+      @game_view.notification.should == X_WINS_MESSAGE
     end
   end
   
@@ -84,10 +84,10 @@ describe "GameView" do
       @game_view.representation.should == @game_string
     end
     it "should show game complete" do
-      @game_view.completion.should == "Would you like to play again?"
+      @game_view.completion.should == GAME_COMPLETED_MESSAGE
     end
     it "should show X as winner" do
-      @game_view.notification.should == "O is the Winner!"
+      @game_view.notification.should == O_WINS_MESSAGE
     end
   end
 end

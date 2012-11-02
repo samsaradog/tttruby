@@ -23,8 +23,14 @@ class GameController
     
     return_value = true
     
+    if ( 1 < response.length)
+      output(BAD_INPUT_MESSAGE + response + "\n")
+      show_game
+      return true
+    end
+    
     case response
-    when /y/i
+    when NEW_GAME_RE
       @game = Game.new()
       @view = GameView.new()
       
@@ -35,11 +41,11 @@ class GameController
         @game.move(generate_move,PLAYER_O_MOVE)
       end
       
-    when /[qxn]/i
+    when QUIT_GAME_RE
       output(EXIT_MESSAGE)
       return_value = false
       
-    when /[0-8]/
+    when MOVE_RANGE_RE
       begin
         @game.move(response,PLAYER_X_MOVE)
         @view.update(@game)
@@ -59,13 +65,15 @@ class GameController
       
     end
     
-    if (return_value)
-      @view.update(@game)
-      output(@view.representation)
-      output(@view.completion)
-    end
+    show_game if (return_value)
     
     return_value
+  end
+  
+  def show_game
+    @view.update(@game)
+    output(@view.representation)
+    output(@view.completion)
   end
   
   def generate_move

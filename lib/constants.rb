@@ -28,6 +28,10 @@ DRAW     = :draw
 MOVE_MESSAGE = "Please choose 0-8 to move,\n" +
                "Y for a new game or Q to quit.\n"
                
+NEW_GAME_RE   = /y/i
+QUIT_GAME_RE  = /[qxn]/i
+MOVE_RANGE_RE = /[0-8]/
+
 PLAYER_X_FIRST_MESSAGE = "Human moves first\n"
 PLAYER_O_FIRST_MESSAGE = "Computer moves first\n"
 
@@ -44,7 +48,7 @@ DRAW_GAME_MESSAGE = "Draw Game"
 X_WINS_MESSAGE    = "X is the Winner!"
 O_WINS_MESSAGE    = "O is the Winner!"
 
-GAME_COMPLETED_MESSAGE = "Would you like to play again?"
+GAME_COMPLETED_MESSAGE = "Would you like to play again? (Y/N)"
 
 EXIT_MESSAGE = "Thank you for playing!\n"
 
