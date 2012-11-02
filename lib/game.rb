@@ -9,7 +9,7 @@ class Game
     @error        = :none
     @condition    = INITIAL_CONDITION
     
-    @winners      = WINNERS_RE.dup
+    @winners      = WINNERS_RE
     
   end
   

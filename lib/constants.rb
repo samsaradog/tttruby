@@ -7,7 +7,7 @@ INITIAL_CONDITION = "012345678"
 
 WINNERS_RE = %w( NNN...... ...NNN... ......NNN 
               N..N..N.. .N..N..N. ..N..N..N
-              N...N.N.. ..N.N.N.. )
+              N...N...N ..N.N.N.. )
               
 WINNER_KEY_RE = /N/
 
@@ -40,7 +40,7 @@ MOVE_TAKEN_MESSAGE = " not available. Please choose another\n"
 
 BAD_INPUT_MESSAGE = "Sorry, I don't understand "
 
-DRAW_GAME_MESSAGE = "Draw Game."
+DRAW_GAME_MESSAGE = "Draw Game"
 X_WINS_MESSAGE    = "X is the Winner!"
 O_WINS_MESSAGE    = "O is the Winner!"
 

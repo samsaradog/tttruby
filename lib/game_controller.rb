@@ -26,6 +26,7 @@ class GameController
     case response
     when /y/i
       @game = Game.new()
+      @view = GameView.new()
       
       if ( human_first? )
         output(PLAYER_X_FIRST_MESSAGE)
@@ -34,7 +35,7 @@ class GameController
         @game.move(generate_move,PLAYER_O_MOVE)
       end
       
-    when /[qx]/i
+    when /[qxn]/i
       output(EXIT_MESSAGE)
       return_value = false
       
@@ -72,7 +73,7 @@ class GameController
   end
   
   def input
-    getc
+    gets.chomp
   end
   
   def output(message)
