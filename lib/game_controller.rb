@@ -18,7 +18,6 @@ class GameController
       show_game()
       break unless(add_response(input))
     end
-    
   end
   
   def add_response(response)
@@ -54,7 +53,7 @@ class GameController
         end
       end
       
-    end
+    end #case
     
     return_value
   end
@@ -69,7 +68,6 @@ class GameController
       output(PLAYER_O_FIRST_MESSAGE)
       @game.move(generate_move,PLAYER_O_MOVE)
     end
-    
   end
   
   def validate_response(response, yes_no_re, move_re, game_complete)

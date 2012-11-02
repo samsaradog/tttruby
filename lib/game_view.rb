@@ -3,13 +3,13 @@ require_relative "constants"
 
 class GameView
   attr_reader :representation, :notification, :error, :completion
+  # attr_reader :representation, :notification, :error, :completion
   
   def initialize
     @representation = INITIAL_DISPLAY.dup
-
-    @notification = ""
-    @error        = ""
-    @completion   = MOVE_MESSAGE
+    @notification   = ""
+    # @error          = ""
+    @completion     = MOVE_MESSAGE
   end
    
   def update(game)

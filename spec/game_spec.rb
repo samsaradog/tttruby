@@ -1,18 +1,13 @@
 require_relative "../lib/game"
 
 describe "Game" do
-  
   before(:each) do
     @game = Game.new
   end
   
   context "initial game" do
-    
     it "exists" do
       @game.should be_an_instance_of Game
-    end
-    it "has error state none" do
-      @game.error.should == :none
     end
     it "has completed state false" do
       @game.completed.should == false
@@ -34,9 +29,6 @@ describe "Game" do
       O_DRAW_MOVES.each { |position| @game.move(position,O_TOKEN)  }
     end
     
-    it "has error state none" do
-      @game.error.should == :none
-    end
     it "has completed state true" do
       @game.completed.should == true
     end
@@ -52,14 +44,12 @@ describe "Game" do
     before(:each) do
       ("0".."2").to_a.each { | position | @game.move(position, X_TOKEN) }
     end
+    
     it "should show X as the winner" do
       @game.notification.should == X_WIN
     end
     it "should show the game complete" do
       @game.completed.should == true
-    end
-    it "has error state none" do
-      @game.error.should == :none
     end
     it "has the right condition" do
       @game.condition.should == "XXX345678"
@@ -70,14 +60,12 @@ describe "Game" do
     before(:each) do
       ("6".."8").to_a.each { | position | @game.move(position, O_TOKEN) }
     end
+    
     it "should show X as the winner" do
       @game.notification.should == O_WIN
     end
     it "should show the game complete" do
       @game.completed.should == true
-    end
-    it "has error state none" do
-      @game.error.should == :none
     end
     it "has the right condition" do
       @game.condition.should == "012345OOO"

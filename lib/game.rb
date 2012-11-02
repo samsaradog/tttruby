@@ -1,16 +1,13 @@
 require_relative "constants"
 
 class Game
-  attr_reader :notification, :completed, :error, :condition
+  attr_reader :notification, :completed, :condition
   
   def initialize
     @notification = :empty
     @completed    = false
-    @error        = :none
     @condition    = INITIAL_CONDITION
-    
     @winners      = WINNERS_RE
-    
   end
   
   def ==(other)
@@ -24,6 +21,8 @@ class Game
   end
   
   def move(position, value)
+    # valid_move is used here to see if the given position is
+    # in the range of possible moves
     raise RangeError   unless valid_move?(position)
     raise RuntimeError unless @condition.include?(position)
     
@@ -34,6 +33,8 @@ class Game
   
   def state_check
     unless @completed
+      # here valid_move is used to find whether a valid move exists in 
+      # the condition. in other words, is there a move available?
       @completed = !valid_move?(@condition)
       @notification = :draw if @completed
     end

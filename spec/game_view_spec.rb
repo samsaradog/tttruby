@@ -10,7 +10,6 @@ describe "GameView" do
       game.move(position, value)
       string.sub!(Regexp.new(position), value)
     end
-
   end
   
   before(:each) do
@@ -20,7 +19,6 @@ describe "GameView" do
   end
   
   context "empty game" do
-    
     it "exists" do
       @game_view.should be_an_instance_of GameView
     end
@@ -30,16 +28,12 @@ describe "GameView" do
     it "has notification message empty" do
       @game_view.notification.should == ""
     end
-    it "has error message empty" do
-      @game_view.error.should == ""
-    end
     it "has completion message available" do
       @game_view.completion.should == MOVE_MESSAGE
     end
   end
   
   context "draw game" do
-    
     before(:each) do
       modify(@game,@game_string,X_TOKEN,X_DRAW_MOVES)
       modify(@game,@game_string,O_TOKEN,O_DRAW_MOVES)
@@ -58,11 +52,11 @@ describe "GameView" do
   end
   
   context "X winner" do
-    
     before(:each) do
       modify(@game,@game_string,X_TOKEN,["2","4","6"])
       @game_view.update(@game)
     end
+    
     it "should have the right string" do
       @game_view.representation.should == @game_string
     end
@@ -75,11 +69,11 @@ describe "GameView" do
   end
   
   context "O winner" do
-    
     before(:each) do
       modify(@game,@game_string,O_TOKEN,["2","5","8"])
       @game_view.update(@game)
     end
+    
     it "should have the right string" do
       @game_view.representation.should == @game_string
     end
