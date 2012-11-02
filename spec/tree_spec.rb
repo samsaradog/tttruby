@@ -10,8 +10,8 @@ describe "Tree" do
   
   context "draw game" do
     before(:each) do
-      X_DRAW_MOVES.each { | pos | @game.move(pos,'X') }
-      O_DRAW_MOVES.each { | pos | @game.move(pos,'O') }
+      X_DRAW_MOVES.each { | pos | @game.move(pos,X_TOKEN) }
+      O_DRAW_MOVES.each { | pos | @game.move(pos,O_TOKEN) }
     end
     
     it "min should have value 0" do
@@ -27,7 +27,7 @@ describe "Tree" do
   
   context "O winning max node" do
     before(:each) do
-      ("0".."2").to_a.each { | pos | @game.move(pos,'X')}
+      ("0".."2").to_a.each { | pos | @game.move(pos,X_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -42,7 +42,7 @@ describe "Tree" do
   
   context "X winning min node" do
     before(:each) do
-      ("0".."2").to_a.each { | pos | @game.move(pos,'O')}
+      ("0".."2").to_a.each { | pos | @game.move(pos,O_TOKEN)}
       @node = MinNode.new(@game)
     end
     
@@ -63,8 +63,8 @@ describe "Tree" do
     #    | X | O
     
     before(:each) do
-      ["0","2","3","7"].each { | pos | @game.move(pos,'X')}
-      ["1","4","5","8"].each { | pos | @game.move(pos,'O')}
+      ["0","2","3","7"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["1","4","5","8"].each { | pos | @game.move(pos,O_TOKEN)}
       @node = MinNode.new(@game)
     end
     
@@ -86,8 +86,8 @@ describe "Tree" do
     #    | O | X
     
     before(:each) do
-      ["0","2","3","7"].each { | pos | @game.move(pos,'O')}
-      ["1","4","5","8"].each { | pos | @game.move(pos,'X')}
+      ["0","2","3","7"].each { | pos | @game.move(pos,O_TOKEN)}
+      ["1","4","5","8"].each { | pos | @game.move(pos,X_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -109,8 +109,8 @@ describe "Tree" do
     # O | X | O
     
     before(:each) do
-      ["3","4","6","8"].each { | pos | @game.move(pos,'O')}
-      ["1","5","7"].each { | pos | @game.move(pos,'X')}
+      ["3","4","6","8"].each { | pos | @game.move(pos,O_TOKEN)}
+      ["1","5","7"].each     { | pos | @game.move(pos,X_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -133,8 +133,8 @@ describe "Tree" do
     # X | O | X
     
     before(:each) do
-      ["3","4","6","8"].each { | pos | @game.move(pos,'X')}
-      ["1","5","7"].each { | pos | @game.move(pos,'O')}
+      ["3","4","6","8"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["1","5","7"].each     { | pos | @game.move(pos,O_TOKEN)}
       @node = MinNode.new(@game)
     end
     
@@ -157,8 +157,8 @@ describe "Tree" do
     # O |   |  
     
     before(:each) do
-      ["3","4"].each { | pos | @game.move(pos,'X')}
-      ["6"].each { | pos | @game.move(pos,'O')}
+      ["3","4"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["6"].each     { | pos | @game.move(pos,O_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -180,8 +180,8 @@ describe "Tree" do
     #   |   | X
     
     before(:each) do
-      ["1","8"].each { | pos | @game.move(pos,'X')}
-      ["4","5"].each { | pos | @game.move(pos,'O')}
+      ["1","8"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["4","5"].each { | pos | @game.move(pos,O_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -203,8 +203,8 @@ describe "Tree" do
     #   |   |  
     
     before(:each) do
-      ["1","4"].each { | pos | @game.move(pos,'X')}
-      ["0"].each { | pos | @game.move(pos,'O')}
+      ["1","4"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["0"].each     { | pos | @game.move(pos,O_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -226,8 +226,8 @@ describe "Tree" do
     #   |   |  
     
     before(:each) do
-      ["4"].each { | pos | @game.move(pos,'X')}
-      ["1"].each { | pos | @game.move(pos,'O')}
+      ["4"].each { | pos | @game.move(pos,X_TOKEN)}
+      ["1"].each { | pos | @game.move(pos,O_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -245,8 +245,8 @@ describe "Tree" do
     #   |   |  
     
     before(:each) do
-      ["4"].each { | pos | @game.move(pos,'O')}
-      ["1"].each { | pos | @game.move(pos,'X')}
+      ["4"].each { | pos | @game.move(pos,O_TOKEN)}
+      ["1"].each { | pos | @game.move(pos,X_TOKEN)}
       @node = MaxNode.new(@game)
     end
     
@@ -264,7 +264,7 @@ describe "Tree" do
     #   |   |  
     
     before(:each) do
-      ["4"].each { | pos | @game.move(pos,'X')}
+      ["4"].each { | pos | @game.move(pos,X_TOKEN)}
       @node = MaxNode.new(@game)
     end
     

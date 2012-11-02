@@ -41,8 +41,8 @@ describe "GameView" do
   context "draw game" do
     
     before(:each) do
-      modify(@game,@game_string,'X',X_DRAW_MOVES)
-      modify(@game,@game_string,'O',O_DRAW_MOVES)
+      modify(@game,@game_string,X_TOKEN,X_DRAW_MOVES)
+      modify(@game,@game_string,O_TOKEN,O_DRAW_MOVES)
       @game_view.update(@game)
     end
     
@@ -60,7 +60,7 @@ describe "GameView" do
   context "X winner" do
     
     before(:each) do
-      modify(@game,@game_string,'X',["2","4","6"])
+      modify(@game,@game_string,X_TOKEN,["2","4","6"])
       @game_view.update(@game)
     end
     it "should have the right string" do
@@ -77,7 +77,7 @@ describe "GameView" do
   context "O winner" do
     
     before(:each) do
-      modify(@game,@game_string,'O',["2","5","8"])
+      modify(@game,@game_string,O_TOKEN,["2","5","8"])
       @game_view.update(@game)
     end
     it "should have the right string" do

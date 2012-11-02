@@ -11,9 +11,11 @@ class GameController
   end
   
   def run
-    add_response("Y")
+    # add_response(NEW_GAME_TOKEN)
+    initialize_game()
     
     while(1)
+      show_game()
       break unless(add_response(input))
     end
     
@@ -21,25 +23,19 @@ class GameController
   
   def add_response(response)
     
-    return_value = true
-    
-    if ( 1 < response.length)
+    unless validate_response(response, 
+                             Regexp.union(NEW_GAME_RE,QUIT_GAME_RE),
+                             MOVE_RANGE_RE,
+                             @game.completed)
       output(BAD_INPUT_MESSAGE + response + "\n")
-      show_game
       return true
     end
     
+    return_value = true
+    
     case response
     when NEW_GAME_RE
-      @game = Game.new()
-      @view = GameView.new()
-      
-      if ( human_first? )
-        output(PLAYER_X_FIRST_MESSAGE)
-      else
-        output(PLAYER_O_FIRST_MESSAGE)
-        @game.move(generate_move,PLAYER_O_MOVE)
-      end
+      initialize_game()
       
     when QUIT_GAME_RE
       output(EXIT_MESSAGE)
@@ -52,26 +48,38 @@ class GameController
       rescue
         output(response+MOVE_TAKEN_MESSAGE)
       else
-        if ( false == @game.completed )
+        unless @game.completed 
           @game.move(generate_move,PLAYER_O_MOVE)
           @view.update(@game)
-          output(@view.notification) if @game.completed
-        else
-          output(@view.notification)
         end
       end
-    else
-      output(BAD_INPUT_MESSAGE + response + "\n")
       
     end
-    
-    show_game if (return_value)
     
     return_value
   end
   
+  def initialize_game
+    @game = Game.new()
+    @view = GameView.new()
+    
+    if ( human_first? )
+      output(PLAYER_X_FIRST_MESSAGE)
+    else
+      output(PLAYER_O_FIRST_MESSAGE)
+      @game.move(generate_move,PLAYER_O_MOVE)
+    end
+    
+  end
+  
+  def validate_response(response, yes_no_re, move_re, game_complete)
+    test_re = (game_complete) ? yes_no_re : Regexp.union(yes_no_re, move_re)
+    test_re =~ response and (response.length == 1)
+  end
+  
   def show_game
     @view.update(@game)
+    output(@view.notification)
     output(@view.representation)
     output(@view.completion)
   end

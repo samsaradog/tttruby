@@ -20,10 +20,22 @@ INITIAL_DISPLAY = " 0 | 1 | 2 \n" +
 X_DRAW_MOVES = ["0","1","5","6","8"]
 O_DRAW_MOVES = ["2","3","4","7"]
 
+X_TOKEN = "X"
+O_TOKEN = "O"
+
+NEW_GAME_TOKEN = "Y"
+QUIT_TOKEN     = "q"
+
+BAD_INPUT_1 = "z"
+BAD_INPUT_2 = "94xd324jkl;"
+BAD_INPUT_3 = ""
+
 X_WIN    = "X wins"
 O_WIN    = "O wins"
 WIN_STUB = " wins"
 DRAW     = :draw
+
+O_WILL_WIN = "O will win"
 
 MOVE_MESSAGE = "Please choose 0-8 to move,\n" +
                "Y for a new game or Q to quit.\n"

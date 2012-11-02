@@ -24,14 +24,14 @@ describe "Game" do
       @game.condition.should == "012345678"
     end
     it "throws a range error when adding a bad move" do
-      lambda { @game.move("X",'X') }.should raise_error(RangeError)
+      lambda { @game.move("X",X_TOKEN) }.should raise_error(RangeError)
     end
   end
   
   context "draw game" do
     before(:each) do
-      X_DRAW_MOVES.each { |position| @game.move(position,'X')  }
-      O_DRAW_MOVES.each { |position| @game.move(position,'O')  }
+      X_DRAW_MOVES.each { |position| @game.move(position,X_TOKEN)  }
+      O_DRAW_MOVES.each { |position| @game.move(position,O_TOKEN)  }
     end
     
     it "has error state none" do
@@ -44,16 +44,16 @@ describe "Game" do
       @game.notification.should == :draw
     end
     it "throws a runtime error when adding another move" do
-      lambda { @game.move("0",'X') }.should raise_error(RuntimeError)
+      lambda { @game.move("0",X_TOKEN) }.should raise_error(RuntimeError)
     end
   end
   
   context "X winner" do
     before(:each) do
-      ("0".."2").to_a.each { | position | @game.move(position, 'X') }
+      ("0".."2").to_a.each { | position | @game.move(position, X_TOKEN) }
     end
     it "should show X as the winner" do
-      @game.notification.should == "X wins"
+      @game.notification.should == X_WIN
     end
     it "should show the game complete" do
       @game.completed.should == true
@@ -68,10 +68,10 @@ describe "Game" do
   
   context "O winner" do
     before(:each) do
-      ("6".."8").to_a.each { | position | @game.move(position, 'O') }
+      ("6".."8").to_a.each { | position | @game.move(position, O_TOKEN) }
     end
     it "should show X as the winner" do
-      @game.notification.should == "O wins"
+      @game.notification.should == O_WIN
     end
     it "should show the game complete" do
       @game.completed.should == true
@@ -92,7 +92,7 @@ describe "Game" do
     end
     it "should show modified game not equal" do
       new_game = @game.dup
-      ("0".."2").to_a.each { | position | new_game.move(position,'X') }
+      ("0".."2").to_a.each { | position | new_game.move(position,X_TOKEN) }
       @game.should_not == new_game
       @game.completed.should_not == new_game.completed
       @game.condition.should_not  == new_game.condition
